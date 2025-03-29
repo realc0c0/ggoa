@@ -1,0 +1,1 @@
+/setpayload { "point_milestone": 99, "is_upper": false, "bet_amount": 0.01, "currency": "ton" }

@@ -1,0 +1,20 @@
+start - Initializes the bot and provides a welcome message
+run - Starts the dice game script
+stop - Stops the currently running dice game script
+setpayload <payload> - Sets a custom payload for the dice game
+showpayload - Displays the current payload being used
+resetpayload - Resets the custom payload to the default
+setAuthCode <auth_code> - Sets a custom authorization code for API requests
+showAuthCode - Displays the current authorization code set for the user
+resetAuthCode - Resets the custom authorization code to default
+
+
+start - welcome message
+run - Starts the dice game script
+stop - Stops 
+setpayload - Sets a custom payload 
+showpayload - Displays the current payload
+resetpayload - Resets the custom payload 
+setauthcode - Sets a custom authorization 
+showauthcode - Displays the current authorization 
+resetauthcode - Resets the custom authorization
