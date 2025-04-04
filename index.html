@@ -91,34 +91,34 @@
             const statusDiv = document.getElementById('status');
             const statusText = statusDiv.querySelector('p');
             
-            try {
-                const response = await fetch('/start_bot', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        bot_token: formData.get('bot_token')
-                    })
-                });
-                
-                const data = await response.json();
-                
-                statusDiv.classList.remove('hidden');
-                if (response.ok) {
-                    statusText.textContent = data.message;
-                    statusText.className = 'text-sm text-green-600';
-                    currentBotToken = formData.get('bot_token');
-                    updateUIState(true);
-                } else {
-                    statusText.textContent = data.error;
-                    statusText.className = 'text-sm text-red-600';
-                }
-            } catch (error) {
-                statusDiv.classList.remove('hidden');
-                statusText.textContent = 'An error occurred while starting the bot.';
-                statusText.className = 'text-sm text-red-600';
-            }
+try {
+    const response = await fetch('/start_bot', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            bot_token: formData.get('bot_token')
+        })
+    });
+    const data = await response.json();
+    statusDiv.classList.remove('hidden');
+    if (response.ok) {
+        statusText.textContent = data.message;
+        statusText.className = 'text-sm text-green-600';
+        currentBotToken = formData.get('bot_token');
+        updateUIState(true);
+    } else {
+        console.error('Error response:', response.status, data); // Log the response status and data
+        statusText.textContent = data.error || 'An unknown error occurred.';
+        statusText.className = 'text-sm text-red-600';
+    }
+} catch (error) {
+    console.error('Fetch error:', error); // Log the error for debugging
+    statusDiv.classList.remove('hidden');
+    statusText.textContent = 'An error occurred while starting the bot.';
+    statusText.className = 'text-sm text-red-600';
+}
         });
 
         document.getElementById('disconnectButton').addEventListener('click', async () => {
